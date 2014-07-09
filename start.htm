@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+</head>
+<title>jQuery</title>
+<body>
+<div>
+	<div class='btn' data-panelId="id1">#btn1</div>
+	<div class='btn' data-panelId="id2">#btn2</div>
+	<div class='btn' data-panelId="id3">#btn2</div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<ul>
+	<div><li id="id1"><a href="#">Home</a></li></div>
+	<div><li id="id2"><a href="#">About</a></li></div>
+	<div><li id="id3"><a href="#">Copyright &copy;</a></li></div>
+</ul>
+<div class="new">
+	<h3>The content over here</h3>
+</div>
+
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+$(function(){
+
+		$('.btn').on('click',function(){
+			var panel = $(this).attr('data-panelId');
+			$('#'+panel).toggle();
+			$('.new').fadeToggle(500).html('You clicked a button with '+panel);
+
+		});
+
+});
+</script>
+</body>
+</html>
