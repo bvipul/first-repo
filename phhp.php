@@ -8,9 +8,7 @@
 $con = mysqli_connect('localhost','root','','ucet');
 $fname = mysqli_real_escape_string($con, $_POST['fname']);
 $lname = mysqli_real_escape_string($con, $_POST['lname']);
-$email = mysqli_real_escape_string($con, $_POST['email']);
-$pwd = mysqli_real_escape_string($con, $_POST['pwd']);
-if(mysqli_query($con,"INSERT INTO users VALUES ('$fname','$lname','$email','$pwd')"))
+if(mysqli_query($con,"INSERT INTO users VALUES ('$fname','$lname')"))
 {
 	echo "<center>"."Record Successfully added"."</center>";
 	echo "<div class='cent'>"."Your name :".$fname." ".$lname."<br/>";
