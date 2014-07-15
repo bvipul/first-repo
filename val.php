@@ -3,17 +3,16 @@
 	<?php
 	$con = mysqli_connect('localhost','root','','ucet')or die("Problem in connecting to the database!! " . mysqli_error($con));;
 	echo "Connection Established!!";
-	$rs="SELECT * FROM users";
-	$result=mysqli_query($con,$rs);
-	while($row=mysql_fetch_array($con,$result))
+	$que="CREATE TABLE users(user_first_name CHAR(50) NOT NULL,user_last_name CHAR(50) NOT NULL)";
+	if (mysqli_query($con,$que)) 
 	{
-		print $row['fname'] . "<br>";
-		print $row['lname'] . "<br>";
-		print $row['email'] . "<br>";
-		print $row['pwd'] . "<br>";
+  		echo "Table persons created successfully";
 	}
-	mysqli_close($con);
-
+    else
+	{
+  		echo "Error creating table: " . mysqli_error($con);
+	}
+	mysqli_close($con);	
 	?>
 </body>
 </html>
