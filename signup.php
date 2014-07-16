@@ -11,8 +11,8 @@
 		 {
 		 	echo "Failed to connect to the database" .mysqli_connect_error();
 		 }
-		$fnameErr=$lnameErr=$emailErr=$pwdErr=$cpwdErr=$gender="";
-		$fname=$lname=$email=$pwd=$cpwd="";
+		$fnameErr=$lnameErr=$emailErr=$pwdErr=$cpwdErr="";
+		$fname=$lname=$email=$pwd=$cpwd=$gender="";
 		if($_SERVER["REQUEST_METHOD"]=="POST")
 		{
 			if(empty($_POST["fname"]))
@@ -67,12 +67,13 @@
 			else
 			{
 				$cpwd=test_input($_POST["cpwd"]);
+				
 				if($pwd!=$cpwd)
 				{
 					$cpwdErr="Passwords Do not match";
 				}
 			}
-			$gender=test_input($gender);
+			$gender=$_POST['gender'];
 		}
 		function test_input($data) 
 		{
@@ -81,27 +82,49 @@
    			$data = htmlspecialchars($data);
    			return $data;
 		}
-		mysqli_close($con);
 	?>
-	<?php include 'index.php'; ?>
+<?php include 'index.php'; ?>
 	<main>
-		<form method="post" action="phhp.php">
+		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 		<span class="error">*Required Field</span><br/>
-		<input type="text" name="fname" placeholder="First Name">
+		<input type="text" name="fname" placeholder="First Name"><br/>
 		<span class="error">* <?php echo $fnameErr;?></span><br/>
-		<input type="text" name="lname" placeholder="Last Name">
+		<input type="text" name="lname" placeholder="Last Name"><br/>
 		<span class="error">* <?php echo $lnameErr;?></span><br/>
-		<input type="email" name="email" placeholder="E-mail">
+		<input type="email" name="email" placeholder="E-mail"><br/>
 		<span class="error">* <?php echo $emailErr;?></span><br/>
-		<input type="password" name="pwd" placeholder="Password">
+		<input type="password" name="pwd" placeholder="Password"><br/>
 		<span class="error">* <?php echo $pwdErr;?></span><br/>
-		<input type="password" name="cpwd" placeholder="Confirm Password">
+		<input type="password" name="cpwd" placeholder="Confirm Password"><br/>
 		<span class="error">* <?php echo $cpwdErr;?></span><br/>
 		Gender:
 		<input type="radio" value="male" name="gender" checked="checked">Male <input type="radio" value="Female" name="gender">Female<br/>
 		<input type="submit" value="Register" name="signup"/>
 		</form>		
+		<?php $fnameErr=$lnameErr=$emailErr=$pwdErr=$cpwdErr=='a';?>
 	</main>
+	
+	<?php
+	$fname = mysqli_real_escape_string($con, $fname);
+	$lname = mysqli_real_escape_string($con, $lname);
+	$email = mysqli_real_escape_string($con, $email);
+	$pwd   = mysqli_real_escape_string($con, $pwd);
+	$gender= mysqli_real_escape_string($con, $gender);
+if(($fnameErr=$lnameErr=$emailErr=$pwdErr=$cpwdErr)=='a')
+{
+    $res=mysqli_query($con,"INSERT INTO users VALUES ('$fname','$lname','$email','$pwd','$gender')");
+	if($res)
+	{
+		echo "<center>"."Record Successfully added"."</center>";
+		echo "<div class='cent'>"."Your name :".$fname." ".$lname."<br/>";
+	}
+	else
+	{
+		echo "Some Error occured";
+	}
+}
+mysqli_close($con);
+?>
 	
 </body>
 </html>
