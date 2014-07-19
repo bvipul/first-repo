@@ -1,34 +1,75 @@
+body
+{
+	background:#99F;
+	border:1px solid black;
+}
+table
+{
+	height:768px;
+	width:1024px;
+}
+table tbody tr 
+{
+	text-align: center;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	background:white;
+}
+table tbody tr td
+{
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	background:white;
+}
+*
+{
+	margin:0;
+	padding:0;
+}
 header
 {
 	height:15%;
 	width:100%;
 	text-align: center;
+	border:1px solid black;
 }
 nav
 {
-	height:10%;
-	width:100%;
-	text-align:center;
+	height:65%;
+	width:20%;
+	border:1px solid black;
+	padding:25px;
+	position: relative;
+	margin-right:25px;
 }
-main
+.main
 {
 	height:65%;
 	width:100%;
-	padding-bottom: 5px;
-	text-align: center;
+	padding-bottom: -5px;
+	margin-left: 10px;
+	float:left;
+	position: fixed;
+	text-align:center;
 }
 footer
 {
 	height:10%;
 	width:100%;
 	text-align: center;
+	border:1px solid black;
 }
 .error
 {
 	color:red;
 	text-align: justify;
+	border:1px solid black;
 }
 .tim
 {
-	text-align:right;
+	float:right;
+	border:1px solid black;
+	width:10%;
 }
