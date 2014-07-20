@@ -1,0 +1,50 @@
+*
+{
+	background:#37F;
+}
+#container
+{
+	height:100%;
+	width:100%;
+}
+header
+{
+	margin:5px 5px 5px 5px;
+}
+header h1
+{
+	text-align:center;
+}
+nav
+{
+	margin:5px 5px 5px 5px;
+	width:10%;
+	height:70%;
+	float:left;
+	border:15px solid black;
+	border-bottom-right-radius: 15px;
+	border-top-right-radius: 15px
+}
+nav ul li
+{
+	list-style-type: none;
+}
+nav .nav
+{
+	text-decoration:none;
+}
+article
+{
+	margin:5px 5px 5px 5px;
+	float:right;
+	width:80%;
+	padding-left:10px;
+	border-radius:15px;
+	border:1px solid black;
+}
+footer
+{
+	clear:both;
+	margin:5px 5px 5px 5px;
+	text-align:center;
+}
